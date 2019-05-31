@@ -21,21 +21,21 @@ namespace RepoLab2.Controllers
 
         // GET: api/Tasks
         [HttpGet]
-        public IEnumerable<Taskul> Get([FromQuery]DateTime from, [FromQuery]DateTime to)
+        public IEnumerable<Taskul> Get([FromQuery]DateTime? from, [FromQuery]DateTime? to)
         {
             IQueryable<Taskul> result = context.Taskuri;
-            //if (from == null && to == null)
-            //{
-            //    return result;
-            //}
-            //if (from != null)
-            //{
-            //    result = result.Where(p => p.Deadline >= from);
-            //}
-            //if (to != null)
-            //{
-            //    result = result.Where(p => p.Deadline <= to);
-            //}
+            if (from == null && to == null)
+            {
+                return result;
+            }
+            if (from != null)
+            {
+                result = result.Where(p => p.Deadline >= from);
+            }
+            if (to != null)
+            {
+                result = result.Where(p => p.Deadline <= to);
+            }
             return result;
 
         }
