@@ -23,7 +23,7 @@ namespace RepoLab2.Controllers
         [HttpGet]
         public IEnumerable<Taskul> Get([FromQuery]DateTime? from, [FromQuery]DateTime? to)
         {
-            IQueryable<Taskul> result = context.Taskuri;
+            IQueryable<Taskul> result = context.Taskuri.Include(c => c.Comments);
             if (from == null && to == null)
             {
                 return result;
@@ -47,6 +47,7 @@ namespace RepoLab2.Controllers
         public IActionResult Get(int id)
         {
             var existing = context.Taskuri
+                .Include(c => c.Comments)
                 .FirstOrDefault(t => t.Id == id);
             if (existing == null)
             {
