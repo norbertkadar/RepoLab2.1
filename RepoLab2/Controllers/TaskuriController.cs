@@ -20,34 +20,33 @@ namespace RepoLab2.Controllers
         }
 
         // GET: api/Tasks
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet]
         public IEnumerable<Taskul> Get([FromQuery]DateTime from, [FromQuery]DateTime to)
         {
             IQueryable<Taskul> result = context.Taskuri;
-            if (from == null && to == null)
-            {
-                return result;
-            }
-            if (from != null)
-            {
-                result = result.Where(p => p.Deadline >= from);
-            }
-            if (to != null)
-            {
-                result = result.Where(p => p.Deadline <= to);
-            }
+            //if (from == null && to == null)
+            //{
+            //    return result;
+            //}
+            //if (from != null)
+            //{
+            //    result = result.Where(p => p.Deadline >= from);
+            //}
+            //if (to != null)
+            //{
+            //    result = result.Where(p => p.Deadline <= to);
+            //}
             return result;
 
         }
 
         // GET: api/Tasks/5
         [HttpGet("{id}", Name = "Get")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get(int id)
         {
             var existing = context.Taskuri
-                .Include(p => p.Comments)
                 .FirstOrDefault(t => t.Id == id);
             if (existing == null)
             {
@@ -101,6 +100,8 @@ namespace RepoLab2.Controllers
 
         //Delete: api/ApiWithActions/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Delete(int id)
         {
             var exists = context.Taskuri.AsNoTracking().FirstOrDefault(t => t.Id == id);

@@ -11,9 +11,10 @@ namespace RepoLab2.Models.DataContext
         {
         }
 
-        public DbSet<Taskul> Taskuri { get; set; }
+        
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<TaskImportance> TasksImportance { get; set; }
+        public DbSet<Taskul> Taskuri { get; set; }
     }
 }

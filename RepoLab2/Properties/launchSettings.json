@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/Taskuri",
+      "launchUrl": "api/taskuri",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

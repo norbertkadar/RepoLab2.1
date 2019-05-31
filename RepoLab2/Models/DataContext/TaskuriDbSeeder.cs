@@ -29,6 +29,7 @@ namespace RepoLab2.Models.DataContext
                 {
                     Name ="Closed"
                 });
+            context.SaveChanges();
 
             context.TasksImportance.AddRange(
                 new TaskImportance
@@ -43,6 +44,7 @@ namespace RepoLab2.Models.DataContext
                 {
                     Name = "High"
                 });
+            context.SaveChanges();
 
             context.Taskuri.AddRange(
                 new Taskul

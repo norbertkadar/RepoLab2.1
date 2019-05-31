@@ -30,11 +30,11 @@ namespace RepoLab2.Models
         [ForeignKey("TaskImportance")]
         public int TaskImportanceId { get; set; }
 
-        [Display(Name = "Task Status")]
-        public virtual Status Status { get; set; }
+        //[Display(Name = "Task Status")]
+        //public virtual Status Status { get; set; }
 
-        [Display(Name = "Task Importance")]
-        public virtual TaskImportance TaskImportance { get; set; }
+        //[Display(Name = "Task Importance")]
+        //public virtual TaskImportance TaskImportance { get; set; }
 
         public List<Comment> Comments { get; set; }
     }
