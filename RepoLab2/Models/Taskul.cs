@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,6 +7,19 @@ using System.Threading.Tasks;
 
 namespace RepoLab2.Models
 {
+    public enum Status
+    {
+        Open=1,
+       InProgress=2,
+        Closed=3
+    }
+
+    public enum TaskImportance
+    {
+        Low=1,
+        Medium=2,
+        High=3
+    }
     public class Taskul
     {
         public int Id { get; set; }
@@ -20,22 +33,14 @@ namespace RepoLab2.Models
         public DateTime Deadline { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTime ClosedAt { get; set; }
+        public DateTime? ClosedAt { get; set; }
 
-        [Required]
-        [ForeignKey("Status")]
-        public int StatusId { get; set; }
+        [EnumDataType(typeof(Status))]
+        public Status Status { get; set; }
 
-        [Required]
-        [ForeignKey("TaskImportance")]
-        public int TaskImportanceId { get; set; }
-
-        //[Display(Name = "Task Status")]
-        //public virtual Status Status { get; set; }
-
-        //[Display(Name = "Task Importance")]
-        //public virtual TaskImportance TaskImportance { get; set; }
-
+        [EnumDataType(typeof(TaskImportance))]
+        public TaskImportance TaskImportance { get; set; }
+        
         public List<Comment> Comments { get; set; }
     }
 }

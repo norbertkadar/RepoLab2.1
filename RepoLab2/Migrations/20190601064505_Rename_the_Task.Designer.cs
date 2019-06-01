@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepoLab2.Models.DataContext;
 
 namespace RepoLab2.Migrations
 {
     [DbContext(typeof(TaskuriDbContext))]
-    partial class TaskuriDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190601064505_Rename_the_Task")]
+    partial class Rename_the_Task
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepoLab2.Models.DataContext;
 
 namespace RepoLab2.Migrations
 {
     [DbContext(typeof(TaskuriDbContext))]
-    partial class TaskuriDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190601062558_AddedEnum_Status_TaskImp")]
+    partial class AddedEnum_Status_TaskImp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +56,7 @@ namespace RepoLab2.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<int>("TaskImportance");
+                    b.Property<int>("TaskImportanceId");
 
                     b.Property<string>("Title");
 

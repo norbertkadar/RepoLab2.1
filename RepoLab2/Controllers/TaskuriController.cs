@@ -84,14 +84,14 @@ namespace RepoLab2.Controllers
                 return Ok(task);
             }
 
-            if (task.StatusId.Equals(3))
+            if (task.Status.ToString() == "Closed")
             {
                 DateTime localDate = DateTime.Now;
                 task.ClosedAt = localDate;
             }
             else
             {
-                task.ClosedAt = DateTime.MaxValue;
+                task.ClosedAt = null;
             }
 
             context.Taskuri.Update(task);
@@ -105,7 +105,7 @@ namespace RepoLab2.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Delete(int id)
         {
-            var exists = context.Taskuri.AsNoTracking().FirstOrDefault(t => t.Id == id);
+            var exists = context.Taskuri.Include(c => c.Comments).AsNoTracking().FirstOrDefault(t => t.Id == id);
             if (exists == null)
             {
                 return NotFound();
