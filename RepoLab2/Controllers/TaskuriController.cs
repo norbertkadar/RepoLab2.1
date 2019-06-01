@@ -93,7 +93,7 @@ namespace RepoLab2.Controllers
             {
                 task.ClosedAt = null;
             }
-
+            task.Id = id;
             context.Taskuri.Update(task);
             context.SaveChanges();
             return Ok(task);
